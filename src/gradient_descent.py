@@ -4,7 +4,7 @@
 
 import numpy as np
  
-def gd_update_cost(X, y, w):
+def compute_cost(X, y, w):
     """
     X - feature matrix
     y - target value
@@ -18,9 +18,8 @@ def gradient_descent(X, y,
     """ return (1) cost history (2) final w """
     n = len(X)
     c = np.zeros(num_iters)
-    for i in range(num_iters):
-        
-        c[i] = gd_update_cost(X, y, w)
+    for i in range(num_iters):       
+        c[i] = compute_cost(X, y, w)
         temp0 = w[0,0] - alpha /(n) * np.sum( (np.dot(X,w) - y[:,None]) * X[:,0][:,None])
         temp1 = w[1,0] - alpha /(n) * np.sum( (np.dot(X,w) - y[:,None]) * X[:,1][:,None])
         w[0,0] = temp0
