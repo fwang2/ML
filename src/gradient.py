@@ -44,7 +44,8 @@ def gradient_descent_w0_w1(X, y, alpha=0.01, num_iters=1500):
 
 
 def gradient_descent(X, y, alpha=0.01, num_iters=500):
-    """ do gradient deswcent on any feature matrix """
+    """ do gradient deswcent on any feature matrix 
+    This version loop over each feature columns"""
     nx, mx = X.shape
     ny, my = y.shape
     assert nx == ny
@@ -65,6 +66,8 @@ def gradient_descent(X, y, alpha=0.01, num_iters=500):
 
 
 def gradient_descent_vf(X, y, alpha=0.01, num_iters=500):
+    """ vector form
+    """
     nx, mx = X.shape
     ny, my = y.shape
     assert nx == ny

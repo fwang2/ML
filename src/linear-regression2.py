@@ -16,7 +16,6 @@ from gradient import *
 data = np.loadtxt("../datasets/ex1data2.txt", delimiter=',')
 n, m = data.shape
 
-n_iter = 10000
 
 # add a column to X
 X = data[:,:-1] # all columns except last 
@@ -29,7 +28,7 @@ X = np.hstack((np.ones((n, 1)), X.reshape(n, m - 1)))
 
 c, w = gradient_descent(X, y, num_iters=500)
 print("Gradient Descent:")
-print("Cost: {:,.2f} after {} iterations".format(c[-1], n_iter))
+print("Cost: {:,.2f}".format(c[-1]))
 print("Weights: {}".format(w.T))
 
 # Estimate the price of a 1650 sq-ft, 3 br house
@@ -51,4 +50,6 @@ c = compute_cost(X, y, w)
 print("Cost: {:,.2f}".format(c))
 print("Weights: {}".format(w.T))
 
-
+temp = np.array([1.0, 1650.0, 3.0])
+price = temp.reshape(1,3).dot(w)
+print("Predicted price for 1650 sq ft, 3 bed rooms: {}".format(price))
