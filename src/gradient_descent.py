@@ -68,8 +68,6 @@ def main():
     # column 2: profit of a food truck in that city
     data = np.loadtxt("../datasets/ex1data2.txt", delimiter=',')
 
-
-
     # add a column to X
     # n is # of samples
     n_iter = 10000
@@ -81,9 +79,8 @@ def main():
     # add 1's as a first column in X
     X = np.hstack((np.ones(n)[:, None], X))
     c, w = gradient_descentv2(X, y, num_iters = n_iter)
-    print("Best cost: {} after {} iterations".format(c[-1], n_iter))
+    print("Best cost: {:,.2f} after {} iterations\n".format(c[-1], n_iter))
     print("Weights: {}".format(w))
-
 
 
 if __name__ == '__main__':
