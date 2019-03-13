@@ -1,6 +1,9 @@
 # linear regression gradient descent
 # datasets/ex1data1.txt
 #
+# Best cost: 4.47697137598 after 10000 iterations
+# Weights: [[-3.89578082] [1.19303364]]
+#
 
 import numpy as np
  
@@ -37,13 +40,15 @@ def main():
 
     # add a column to X
     # n is # of samples
-
+    n_iter = 10000
     X = data[:,0]
     y = data[:,1]
     n,m = data.shape
     # add 1's as a first column in X
     X = np.hstack((np.ones(n)[:, None], X[:, None]))
-    c, w = gradient_descent(X, y)
+    c, w = gradient_descent(X, y, num_iters = n_iter)
+    print("Best cost: {} after {} iterations".format(c[-1], n_iter))
+    print("Weights: {}".format(w))
 
 if __name__ == '__main__':
     main()
