@@ -1,4 +1,4 @@
-from gradient import *
+from .gradient import *
 
 
 

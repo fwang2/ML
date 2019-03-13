@@ -5,10 +5,7 @@
 # Weights: [[-3.89578082] [1.19303364]]
 #
 
-from gradient import * 
-
-
-
+from .gradient import * 
 
 # ex1data1.txt 
 # column 1: population of a city
