@@ -108,9 +108,17 @@ def test():
     with torch.no_grad():
         for data, target in test_loader:
             data, target = Variable(data), Variable(target)
+
+            # make sure we are clear on the input and output:
+            # 'data' comes in as batch, therefore, its shape is (64, 1, 28, 28)
+            # 'output' is prediction, for each data point, there is a outcome of
+            # 10-tuple. Therefore, 'output' shape is (64, 10)
+
             output = model(data)
+
             # sum up batch loss
             test_loss += criterion(output, target).item()
+  
             #
             # get the index of the max
             #
@@ -121,7 +129,13 @@ def test():
             # pred = output.data.max(1, keepdim=True)[1]
             #
             # the following is a bit easier to read.
+
+            # I think, here 'pred' shape is 64 x 1.
+            # 
             pred = output.argmax(dim=1, keepdim=True)
+
+            # tensor.view_as(other): view this tensor the as the same size as
+            # the other.
 
             correct += pred.eq(target.data.view_as(pred)).cpu().sum()
 
