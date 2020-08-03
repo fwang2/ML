@@ -33,5 +33,5 @@ This repository contains several study notes on Machine Learning.
 ## Tools
 
 * [numpy](tools/numpy.ipynb), [matplotlib](tools/matplotlib.ipynb)
-
+* [Customized data loader](tools/data_loader.ipynb)
 
