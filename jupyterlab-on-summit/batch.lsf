@@ -1,0 +1,59 @@
+#!/bin/bash
+
+#BSUB -P STF008
+#BSUB -J jupyterlab
+#BSUB -W 120
+#BSUB -nnodes 1
+#BSUB -alloc_flags nvme
+
+## No need for email
+##BSUB -B
+##BSUB -N
+
+echo "======= Welcome to JupyterLab setup script for Summit =======" 
+
+export HOME=$(pwd)
+export PORT=8887
+
+#
+# cat ${LSB_DJOB_HOSTFILE} gives you:
+#   batch5
+#   h36n04
+#   h36n04
+#   ...
+# After sort and uniq, you are left with batch5 and h36n04
+# grep -v batch and grep -v login eliminated login and batch
+# what is left is just compute node
+#
+# I don't know master is really useful here, unless jupyter knows how to run on more than one compute
+#
+#
+
+computenodes=$(cat ${LSB_DJOB_HOSTFILE} | sort | uniq | grep -v login | grep -v batch)
+master=$(echo ${computenodes} | cut -d' ' -f1)
+
+re='^[0-9]+$'
+if ! [[ $PORT =~ $re ]] ; then
+   echo "PortNumberError: Your port is invalid."; exit 1
+fi
+
+#nnodes=$3
+#hostname=$2
+
+echo "# of nodes: $nnodes" 
+echo "Compute nodes: $computenodes" 
+echo "Master node: $master"
+
+# The following steps are too fragile, it is better to know what you are doing
+# rather blindly run this:
+# 
+# Open a new terminal window and copy & paste the following: 
+#   ssh -L $PORT:localhost:$PORT $USER@${hostname}.summit.olcf.ornl.gov 
+# and log in to this node through tunneling."
+# Now, go back to the other window, copy & paste the following: 
+#   ssh -L $PORT:localhost:$PORT $master -N &" >> bout.txt
+# On your local machine browser, type: localhost:$PORT" 
+
+jsrun -n${nnodes} -a1 -c42 -g6 -r1 ./start-jupyter.sh $PORT
+
+echo "JupyterLab is now running on the compute node $master" 
