@@ -22,6 +22,9 @@ This repository contains several study notes on Machine Learning.
 
 ## Clustering
 
+* [Hierarchical Clustering](Clustering/hierarchical_clustering.ipynb)
+* [K-means Clustering](Clustering/kmeans.ipynb)
+  
 ## Deep Learning
 * [Gradient Descent](DL/gd-general.ipynb)
 * [Compute Graph, Back Propagation](DL/autograd.ipynb)
@@ -31,6 +34,8 @@ This repository contains several study notes on Machine Learning.
 * [Regularization and dropout](DL/regularization.ipynb)
 * [Activation Functions](DL/activation_functions.ipynb)
     * [Look into softmax and cross-entropy in PyTorch context](DL/softmax.ipynb)
+* [CNN](DL/CNN.ipynb)
+* [RNN and LSTM](DL/RNN.ipynb)
   
 ## Scalable Learning
 
