@@ -37,6 +37,8 @@ This repository contains several study notes on Machine Learning.
 * [CNN](DL/CNN.ipynb)
 * [RNN and LSTM](DL/RNN.ipynb)
 * [Transferred Learning](DL/transfer_learning.md)
+* [Federated Learning](DL/federated_learning.md)
+* 
 ## Scalable Learning
 
 * [Running Jupyter on Summit](JupyterOnSummit.md)
