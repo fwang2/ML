@@ -24,6 +24,7 @@ This repository contains several study notes on Machine Learning.
 
 * [Hierarchical Clustering](Clustering/hierarchical_clustering.ipynb)
 * [K-means Clustering](Clustering/kmeans.ipynb)
+* [DBSCAN](Clustering/DBSCAN.ipynb)
   
 ## Deep Learning
 * [Gradient Descent](DL/gd-general.ipynb)
